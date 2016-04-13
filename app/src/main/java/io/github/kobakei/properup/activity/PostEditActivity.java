@@ -1,8 +1,11 @@
 package io.github.kobakei.properup.activity;
 
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +18,8 @@ import io.github.kobakei.properup.R;
 
 public class PostEditActivity extends AppCompatActivity {
 
+    private static final String TAG = PostEditActivity.class.getSimpleName();
+
     @Bind(R.id.edit)
     EditText editText;
 
@@ -25,13 +30,33 @@ public class PostEditActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // 外部アプリから呼ばれたときの処理
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+        if (action.equals(Intent.ACTION_SEND) && type != null) {
+            if (type.equals("text/plain")) {
+                editText.setText(intent.getStringExtra(Intent.EXTRA_TEXT));
+            }
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                Log.v(TAG, "Up pressed");
+                Intent upIntent = NavUtils.getParentActivityIntent(this);
+                if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+                    Log.v(TAG, "Recreate task");
+                    TaskStackBuilder.create(this)
+                            .addNextIntentWithParentStack(upIntent)
+                            .startActivities();
+                } else {
+                    Log.v(TAG, "Same task");
+                    NavUtils.navigateUpFromSameTask(this);
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
