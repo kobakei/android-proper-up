@@ -60,6 +60,7 @@ public class NewPostActivity extends AppCompatActivity {
                     Log.v(TAG, "Same task");
                     NavUtils.navigateUpFromSameTask(this);
                 }
+                overridePendingTransition(R.animator.pull_in_left, R.animator.push_out_right);
                 return true;
         }
         return super.onOptionsItemSelected(item);
