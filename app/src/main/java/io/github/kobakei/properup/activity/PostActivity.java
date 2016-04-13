@@ -13,6 +13,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.kobakei.properup.R;
 
+/**
+ * 投稿表示画面
+ */
 public class PostActivity extends AppCompatActivity {
 
     @Bind(R.id.image)

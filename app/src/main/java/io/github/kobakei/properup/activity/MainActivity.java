@@ -1,18 +1,19 @@
 package io.github.kobakei.properup.activity;
 
 import android.content.Intent;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import io.github.kobakei.properup.R;
 import io.github.kobakei.properup.entity.Post;
 import io.github.kobakei.properup.fragment.PostFragment;
 
+/**
+ * タイムライン画面
+ */
 public class MainActivity extends AppCompatActivity implements PostFragment.OnListFragmentInteractionListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements PostFragment.OnLi
     }
 
     private void goToNewPost() {
-        Intent intent = new Intent(this, PostEditActivity.class);
+        Intent intent = new Intent(this, NewPostActivity.class);
         startActivity(intent);
     }
 }

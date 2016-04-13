@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,9 +15,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.github.kobakei.properup.R;
 
-public class PostEditActivity extends AppCompatActivity {
+/**
+ * 投稿画面
+ * この画面は他のアプリから暗黙的インテントで直接呼び出されることがある
+ */
+public class NewPostActivity extends AppCompatActivity {
 
-    private static final String TAG = PostEditActivity.class.getSimpleName();
+    private static final String TAG = NewPostActivity.class.getSimpleName();
 
     @Bind(R.id.edit)
     EditText editText;
@@ -62,6 +65,11 @@ public class PostEditActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * 投稿ボタンを押された時
+     * 他のアプリから呼び出された時は、投稿完了後元のアプリに戻るのが正しいので、
+     * finishだけする
+     */
     @OnClick(R.id.button)
     void onButtonClicked() {
         Toast.makeText(this, "Completed post", Toast.LENGTH_SHORT).show();

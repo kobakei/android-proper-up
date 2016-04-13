@@ -19,7 +19,7 @@
         </activity>
 
         <!-- 親が一意に決まるActivity -->
-        <activity android:name=".activity.PostEditActivity"
+        <activity android:name=".activity.NewPostActivity"
             android:label="New post"
             android:parentActivityName=".activity.MainActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"

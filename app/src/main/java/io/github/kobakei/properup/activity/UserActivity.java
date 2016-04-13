@@ -1,6 +1,5 @@
 package io.github.kobakei.properup.activity;
 
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,6 +10,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.kobakei.properup.R;
 
+/**
+ * ユーザー情報画面
+ */
 public class UserActivity extends AppCompatActivity {
 
     @Bind(R.id.image)

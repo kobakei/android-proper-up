@@ -10,6 +10,9 @@ import io.github.kobakei.properup.R;
 import io.github.kobakei.properup.entity.Post;
 import io.github.kobakei.properup.fragment.PostFragment;
 
+/**
+ * 検索結果画面
+ */
 public class SearchActivity extends AppCompatActivity implements PostFragment.OnListFragmentInteractionListener {
 
     @Override
