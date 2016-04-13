@@ -31,10 +31,11 @@ public class SearchActivity extends AppCompatActivity implements PostFragment.On
     }
 
     @Override
-    public void onPostClicked(Post item) {
+    public void onPostClicked(Post post) {
         Intent intent = new Intent(this, PostActivity.class);
-        intent.putExtra("user", item.user.name);
-        intent.putExtra("content", item.content);
+        intent.putExtra("image", post.user.face);
+        intent.putExtra("user", post.user.name);
+        intent.putExtra("content", post.content);
         startActivity(intent);
     }
 
@@ -42,6 +43,7 @@ public class SearchActivity extends AppCompatActivity implements PostFragment.On
     public void onUserClicked(Post post) {
         Intent intent = new Intent(this, UserActivity.class);
         intent.putExtra("user", post.user.name);
+        intent.putExtra("image", post.user.face);
         startActivity(intent);
     }
 }

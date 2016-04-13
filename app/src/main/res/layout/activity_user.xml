@@ -9,9 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="io.github.kobakei.properup.activity.UserActivity">
 
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        tools:src="@drawable/jack"/>
+
     <TextView
         android:id="@id/user"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        tools:text="Jack"/>
 
 </RelativeLayout>

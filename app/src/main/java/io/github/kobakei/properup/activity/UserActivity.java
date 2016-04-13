@@ -4,6 +4,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.Bind;
@@ -12,6 +13,8 @@ import io.github.kobakei.properup.R;
 
 public class UserActivity extends AppCompatActivity {
 
+    @Bind(R.id.image)
+    ImageView imageView;
     @Bind(R.id.user)
     TextView userView;
 
@@ -23,6 +26,7 @@ public class UserActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        imageView.setImageResource(getIntent().getIntExtra("image", 0));
         userView.setText(getIntent().getStringExtra("user"));
     }
 

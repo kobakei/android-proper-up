@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements PostFragment.OnLi
     @Override
     public void onPostClicked(Post post) {
         Intent intent = new Intent(this, PostActivity.class);
+        intent.putExtra("image", post.user.face);
         intent.putExtra("user", post.user.name);
         intent.putExtra("content", post.content);
         startActivity(intent);
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements PostFragment.OnLi
     public void onUserClicked(Post post) {
         Intent intent = new Intent(this, UserActivity.class);
         intent.putExtra("user", post.user.name);
+        intent.putExtra("image", post.user.face);
         startActivity(intent);
     }
 

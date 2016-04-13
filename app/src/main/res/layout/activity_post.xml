@@ -9,15 +9,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="io.github.kobakei.properup.activity.PostActivity">
 
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        tools:src="@drawable/jack"/>
+
     <TextView
         android:id="@+id/user"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image"
+        android:layout_alignBottom="@+id/image"
+        tools:text="Jack"/>
 
     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/user"/>
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/image"
+        android:textSize="20sp"
+        tools:text="Hello world"/>
 
 </RelativeLayout>

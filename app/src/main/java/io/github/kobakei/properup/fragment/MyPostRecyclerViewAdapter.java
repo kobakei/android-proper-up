@@ -4,7 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -31,6 +34,10 @@ public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
+        Picasso.with(holder.mView.getContext())
+                .load(mValues.get(position).user.face)
+                .fit()
+                .into(holder.mImageView);
         holder.mUserView.setText(mValues.get(position).user.name);
         holder.mContentView.setText(mValues.get(position).content);
 
@@ -52,6 +59,14 @@ public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecycl
                 }
             }
         });
+        holder.mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (null != mListener) {
+                    mListener.onUserClicked(holder.mItem);
+                }
+            }
+        });
     }
 
     @Override
@@ -61,6 +76,7 @@ public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
+        public final ImageView mImageView;
         public final TextView mUserView;
         public final TextView mContentView;
         public Post mItem;
@@ -68,6 +84,7 @@ public class MyPostRecyclerViewAdapter extends RecyclerView.Adapter<MyPostRecycl
         public ViewHolder(View view) {
             super(view);
             mView = view;
+            mImageView = (ImageView) view.findViewById(R.id.image);
             mUserView = (TextView) view.findViewById(R.id.user);
             mContentView = (TextView) view.findViewById(R.id.content);
         }
