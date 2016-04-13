@@ -35,7 +35,7 @@ public class PostEditActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
-        if (action.equals(Intent.ACTION_SEND) && type != null) {
+        if (action != null && action.equals(Intent.ACTION_SEND) && type != null) {
             if (type.equals("text/plain")) {
                 editText.setText(intent.getStringExtra(Intent.EXTRA_TEXT));
             }
